@@ -18,7 +18,7 @@
     </div>
 
     {% for i, n in inst %}
-        <div class="line-{{ i }}"><span>{{ n }}</span>
+        <div class="line-{{ i }}"><span class="beat-name">{{ n }}</span>
             {% for j in range(20) %}
                 <button id="button-{{ i }}-{{ j }}" class="beat" onclick="toggleBeat(this.id)"></button>
             {% endfor %}

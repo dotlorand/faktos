@@ -18,7 +18,7 @@ def init_db():
 
 @app.route("/")
 def index():
-    inst = list(enumerate(["Open Hat", "Closed Hat", "Clap", "Kick"]))
+    inst = list(enumerate(["Open", "Closed", "Clap", "Kick"]))
 
     init_db()
 
