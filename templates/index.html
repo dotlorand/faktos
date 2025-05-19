@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Make beats</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+
+<body>
+<h1>Make & share beats.</h1>
+
+<div class="step-sequencer">
+    <div class="line-steps">
+        <br>
+        {% for step in range(20) %}
+            <span id="step-{{ step }}" class="step"></span>
+        {% endfor %}
+    </div>
+
+    {% for i, n in inst %}
+        <div class="line-{{ i }}"><span>{{ n }}</span>
+            {% for j in range(20) %}
+                <button id="button-{{ i }}-{{ j }}" class="beat" onclick="toggleBeat(this.id)"></button>
+            {% endfor %}
+        </div>
+    {% endfor %}
+</div>
+
+<div class="controls">
+    <button onclick="startBeat()">Start</button>
+    <button onclick="stopBeat()">Stop</button>
+    <button onclick="clearAll()">Clear all</button>
+    <button onclick="saveBeat()">Save beat</button>
+</div>
+
+<div class="saved-beats">
+    <h3>Saved Beats</h3>
+    {% for beat in beats %}
+        <div>
+            <a href="#" onclick="loadSavedBeat({{ beat[0] }}); return false;">Beat {{ beat[0] }}</a>
+            <button onclick="deleteBeat({{ beat[0] }})">Delete</button>
+        </div>
+    {% endfor %}
+</div>
+
+<script src="{{ url_for('static', filename='js/runbeat.js') }}"></script>
+
+</body>
+</html>
